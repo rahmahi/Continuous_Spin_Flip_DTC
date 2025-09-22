@@ -1,18 +1,27 @@
-# Basisc square wave: SX-->T1;  flat band --> T2;  T1 + T2 = T
-from signal import signal
 from scipy.special import jn_zeros
 from itertools import combinations
 import numpy as np
 from qutip import *
+from scipy import signal
+import traceback
 
-
-def drive(t, args):
+def zerodrive(t, args):
+    d = args['duty']
     w = args['omega']
-    g = args['g']
+    T = 2 * np.pi/w
+    sqr = -signal.square(w * t, duty = d)
+    if sqr < 0:
+        sqr= 0
+    return sqr
 
-    # Example: sin²(wt) function
-    signl = g * np.sin(w/2  * t)**2
-    return signl
+def onedrive(t, args):
+    d = args['duty']
+    w = args['omega']
+    T = 2 * np.pi/w
+    sqr = signal.square(w * t, duty = d)
+    if sqr < 0:
+        sqr= 0
+    return sqr
 
 
 # HAMILTONIAN   
@@ -72,26 +81,17 @@ def pbc_hamiltonian(args):
     sx,sy,sz = sigmax(), sigmay(), sigmaz()
     empt = qzero(2**N) + 1j * qzero(2**N)    
     H01, H02, H11 = empt,  empt, empt
-    
-    # for i in range(N-1):
-    #     id = qeye(2**i)    
-    #     dim11 = N-2-i
-    #     id1 = qeye(2**dim11)
-    #     H01 = H01 + Qobj(tensor(id,tensor(sz,tensor(sz,id1))).full())
         
-    comb = combinations(np.arange(N), 2)
-    for nm in list(comb):
-        i,j= np.array(nm)
-        id = qeye(2**i)
-        dim11 = j-i-1
+    # The following loop would add nearest-neighbor interactions for open boundary conditions,
+    # but is commented out because for periodic boundary conditions, we need to include
+    # interactions between all pairs, including the periodic wrap-around.
+    for i in range(N-1):
+        id = qeye(2**i)    
+        dim11 = N-2-i
         id1 = qeye(2**dim11)
-        dim12 = N-1-j
-        id2 = qeye(2**dim12)
-        H01 = H01 + Qobj(tensor(id, tensor(sz, tensor(id1, tensor(sz,id2)))).full())\
-            * j_ij(Jvalue, i,j, beta)
-            
-    H01 = H01 + Qobj(tensor(id, tensor(sz, tensor(id1, tensor(sz,id2)))).full())\
-            * j_ij(Jvalue, 0, N-1, beta)
+        H01 = H01 + Qobj(tensor(id, tensor(sz, tensor(sz, id1))).full())
+        
+    #H01 = H01 + Qobj(tensor(sigmaz(), tensor(qeye(2**(N-2)), sigmaz())).full())
 
         
     for i in range(N):
@@ -126,7 +126,7 @@ def magnetization_position(args):
     N  =  args['N']
     er = args['er']
     H01, H02, H11 = position_hamiltonian(args)
-    H = [H01,[H02, drive]]
+    H = [[H01, zerodrive], [H02, onedrive]]
 
     grket = basis(2**N,0)
     times = args['times']
@@ -140,8 +140,9 @@ def magnetization_stroboscopic(args):
     w = args['omega']
     T = 2 * np.pi/w
     times = np.arange(0, maxT + 1) * T
-    H01, H02, H11 = position_hamiltonian(args)
-    H = [H01,[H02, drive]]
+    
+    H01, H02, H11 = pbc_hamiltonian(args)
+    H = [[H01, onedrive], [H02, zerodrive]]
 
     grket = basis(2**N,0)
     data = mesolve(H, grket, times, [], [H11/N], args = args)
