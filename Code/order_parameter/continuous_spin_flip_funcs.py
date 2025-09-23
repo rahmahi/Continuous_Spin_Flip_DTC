@@ -29,12 +29,14 @@ def position_hamiltonian(args):
     empt = qzero(2**N) + 1j * qzero(2**N)    
     H01, H02, H11 = empt,  empt, empt
     
-    # for i in range(N-1):
-    #     id = qeye(2**i)    
-    #     dim11 = N-2-i
-    #     id1 = qeye(2**dim11)
-    #     H01 = H01 + Qobj(tensor(id,tensor(sz,tensor(sz,id1))).full())
+    for i in range(N-1):
+        id = qeye(2**i)    
+        dim11 = N-2-i
+        id1 = qeye(2**dim11)
+        H01 = H01 + Qobj(tensor(id,tensor(sz,tensor(sz,id1))).full())
         
+    
+    '''    
     comb = combinations(np.arange(N), 2)
     for nm in list(comb):
         i,j= np.array(nm)
@@ -45,7 +47,7 @@ def position_hamiltonian(args):
         id2 = qeye(2**dim12)
         H01 = H01 + Qobj(tensor(id, tensor(sz, tensor(id1, tensor(sz,id2)))).full())\
             * j_ij(Jvalue, i,j, beta)
-
+    '''
         
     for i in range(N):
         id = qeye(2**i)    
@@ -73,12 +75,18 @@ def pbc_hamiltonian(args):
     empt = qzero(2**N) + 1j * qzero(2**N)    
     H01, H02, H11 = empt,  empt, empt
     
-    # for i in range(N-1):
-    #     id = qeye(2**i)    
-    #     dim11 = N-2-i
-    #     id1 = qeye(2**dim11)
-    #     H01 = H01 + Qobj(tensor(id,tensor(sz,tensor(sz,id1))).full())
-        
+    for i in range(N-1):
+        id = qeye(2**i)    
+        dim11 = N-2-i
+        id1 = qeye(2**dim11)
+        H01 = H01 + Qobj(tensor(id,tensor(sz,tensor(sz,id1))).full())
+    
+    # Periodic Boundary Condition term
+    H01 = H01 + Qobj(tensor(sz, tensor(qeye(2**(N-2)), sz)).full())   
+     
+    H01 = H01 * Jvalue
+    
+    '''    
     comb = combinations(np.arange(N), 2)
     for nm in list(comb):
         i,j= np.array(nm)
@@ -92,7 +100,7 @@ def pbc_hamiltonian(args):
             
     H01 = H01 + Qobj(tensor(id, tensor(sz, tensor(id1, tensor(sz,id2)))).full())\
             * j_ij(Jvalue, 0, N-1, beta)
-
+    '''
         
     for i in range(N):
         id = qeye(2**i)    
@@ -140,7 +148,7 @@ def magnetization_stroboscopic(args):
     w = args['omega']
     T = 2 * np.pi/w
     times = np.arange(0, maxT + 1) * T
-    H01, H02, H11 = position_hamiltonian(args)
+    H01, H02, H11 = pbc_hamiltonian(args)
     H = [H01,[H02, drive]]
 
     grket = basis(2**N,0)
