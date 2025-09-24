@@ -143,7 +143,6 @@ def magnetization_position(args):
 
 def magnetization_stroboscopic(args):      
     N  =  args['N']
-    er = args['er']
     maxT = args['maxT']
     w = args['omega']
     T = 2 * np.pi/w
