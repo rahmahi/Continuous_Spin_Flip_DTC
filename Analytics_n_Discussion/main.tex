@@ -52,7 +52,7 @@ where $J$ denotes the nearest-neighbor Ising interaction strength, $\hat{\sigma}
 The drive scheme is illustrated in the figure below:
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{continuous_flip_drive.pdf}
+    \includegraphics[width=0.5\textwidth]{figs/continuous_flip_drive.pdf}
     \caption{Continuous spin flip drive protocol with $g_0 = \frac{\omega}{2}$. The transverse field $G(t)$ varies smoothly over time, inducing continuous spin flips.}
 \end{figure}
 The amplitude $g_0$ is chosen such that $\displaystyle \int_0^T G(t)\,dt = \frac{\pi}{2}$, ensuring that the transverse field induces a spin flip over one period $T = \frac{2\pi}{\omega}$. Consequently, the system is anticipated to exhibit a subharmonic response with a period of $2T$.
@@ -87,13 +87,13 @@ For various interaction strengths, we numerically evaluate the magnetization dyn
     \centering
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{time_mag_epsilon_r0.00_J0.64_g10.0_allN.pdf}
+        \includegraphics[width=\textwidth]{figs/time_mag_epsilon_r0.00_J0.64_g10.0_allN.pdf}
         \caption*{(a) Magnetization dynamics for $J = 0.2/T$.}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{DTC_mag_fft_beat_er=0.0_J=0.6366197723675814_g=10.0.pdf}
+        \includegraphics[width=\textwidth]{figs/DTC_mag_fft_beat_er=0.0_J=0.6366197723675814_g=10.0.pdf}
         \caption*{(b) FFT of magnetization showing period-doubling and fall of beat frequency with system size inverse proportionality.}
     \end{minipage}
     \caption{(a) Magnetization dynamics and (b) its Fourier transform for $J = 0.2/T$. The system exhibits robust period-doubling behavior, indicative of discrete time crystal (DTC) order. The FFT reveals a pronounced peak at half the driving frequency, confirming the subharmonic response characteristic of DTCs. The beat frequency diminishes with increasing system size, suggesting enhanced stability of the DTC phase in larger systems.}
@@ -107,13 +107,13 @@ The figure above illustrates the magnetization dynamics and its Fourier transfor
     \centering
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{time_mag_epsilon_r0.03_J0.64_g10.0_allN.pdf}
+        \includegraphics[width=\textwidth]{figs/time_mag_epsilon_r0.03_J0.64_g10.0_allN.pdf}
         \caption*{(a) Magnetization dynamics for $J = 0.2/T$.}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{DTC_mag_fft_beat_er=0.03_J=0.6366197723675814_g=10.0.pdf}
+        \includegraphics[width=\textwidth]{figs/DTC_mag_fft_beat_er=0.03_J=0.6366197723675814_g=10.0.pdf}
         \caption*{(b) FFT of magnetization showing period-doubling and fall of beat frequency with system size inverse proportionality.}
     \end{minipage}
     \caption{(a) Magnetization dynamics and (b) its Fourier transform for $J = 0.2/T$. The system exhibits robust period-doubling behavior, indicative of discrete time crystal (DTC) order. The FFT reveals a pronounced peak at half the driving frequency, confirming the subharmonic response characteristic of DTCs. The beat frequency diminishes with increasing system size, suggesting enhanced stability of the DTC phase in larger systems.}
@@ -124,13 +124,13 @@ The figure above illustrates the magnetization dynamics and its Fourier transfor
     \centering
     \begin{minipage}[t]{0.48\textwidth} 
         \centering
-        \includegraphics[width=\textwidth]{time_mag_epsilon_r0.03_J2.00_g10.0_allN.pdf}
+        \includegraphics[width=\textwidth]{figs/time_mag_epsilon_r0.03_J2.00_g10.0_allN.pdf}
         \caption*{(a) Magnetization dynamics for $J = 2$.}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{DTC_mag_fft_beat_er=0.03_J=2_g=10.0.pdf}
+        \includegraphics[width=\textwidth]{figs/DTC_mag_fft_beat_er=0.03_J=2_g=10.0.pdf}
         \caption*{(b) FFT of magnetization showing period-doubling and fall of beat frequency with system size inverse proportionality.}
     \end{minipage}
     \caption{(a) Magnetization dynamics and (b) its Fourier transform for $J = 2$. The system exhibits robust period-doubling behavior, indicative of discrete time crystal (DTC) order. The FFT reveals a pronounced peak at half the driving frequency, confirming the    subharmonic response characteristic of DTCs. The beat frequency diminishes with increasing system size, suggesting enhanced stability of the DTC phase in larger systems.}  
@@ -143,21 +143,80 @@ The figure above illustrates the magnetization dynamics and its Fourier transfor
     \centering
     \begin{minipage}[t]{0.48\textwidth}     
         \centering
-        \includegraphics[width=\textwidth]{time_mag_epsilon_r0.03_J10.00_g10.0_allN.pdf}
+        \includegraphics[width=\textwidth]{figs/time_mag_epsilon_r0.03_J10.00_g10.0_allN.pdf}
         \caption*{(a) Magnetization dynamics for $J = 10$.}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{DTC_mag_fft_beat_er=0.03_J=10.0_g=10.0.pdf}
+        \includegraphics[width=\textwidth]{figs/DTC_mag_fft_beat_er=0.03_J=10.0_g=10.0.pdf}
         \caption*{(b) FFT of magnetization showing period-doubling and fall of beat frequency with system size inverse proportionality.}
     \end{minipage}
     \caption{(a) Magnetization dynamics and (b) its Fourier transform for $J = 10$. The system exhibits robust period-doubling behavior, indicative of discrete time crystal (DTC) order. The FFT reveals a pronounced peak at half the driving frequency, confirming the subharmonic response characteristic of DTCs. The beat frequency diminishes with increasing system size, suggesting enhanced stability of the DTC phase in larger systems.}  
 \end{figure}
 
-\section{Conclusion}
+\subsection{Note}
 
 In summary, we have investigated the emergence of discrete time crystal (DTC) order in a one-dimensional spin-$1/2$ chain subjected to a continuous spin flip drive protocol in presence of a constant nearest-neighbor spin-spin interaction. By numerically simulating the magnetization dynamics and performing Fourier analysis, we observed robust period-doubling behavior across various interaction strengths, including $J = 0.2/T$, $J = 2$ for both in presence and absence of the rotational error in the spin flip operation. The FFT results consistently revealed pronounced peaks at half the driving frequency, confirming the subharmonic response characteristic of DTCs. Notably, the beat frequency diminished with increasing system size, indicating enhanced stability of the DTC phase in the thermodynamic limit. These findings demonstrate that continuous driving can effectively stabilize DTC order, providing new insights into non-equilibrium phases of matter and their potential applications in quantum information processing.
+
+\newpage
+\section{Absolute Order Parameter}
+\todo[inline, color=yellow]{The following section summarizes recent developments.}
+We further investigated the absolute order parameter as defined in the work by Collura et al.~\cite{Collura2023}. The absolute order parameter is defined as
+\begin{equation}
+    \mathcal{O} = (-1)^n \expval{\hat{\sigma}_i^z}{\psi(nT)} \quad\; ;n=0,1,2,\ldots
+\end{equation}
+where $\ket{\psi(nT)}$ is the state of the system at stroboscopic times $t = nT$. The absolute order parameter captures the essence of the stability of the DTC regarding the presence of the rotational error and the system sizes.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figs/order_er0.0_J0.18_g10.0.pdf}
+    \includegraphics[width=0.45\textwidth]{figs/order_er0.0_J1_g10.0.pdf}
+    \caption{Absolute order parameter $\mathcal{O}$ as a function of stroboscopic time $t=nT$ for various system sizes $N=8,10,12,14$. Left panel: Results for $J = 0.18$. Right panel: Results for $J = 1$. Both panels exhibit a fall of the absolute value of the order parameter with increasing system size.}
+\end{figure}
+\subsection{Comparison with earlier works}
+In order to get a better confirmation and comprehension of the DTC order in our continuous spin flip drive protocol, we compared our results with the findings of Collura et al.~\cite{Collura2023}. The results are presented in the following figure:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{figs/Collura_orderParam_er0.1_J1_g12.500000000000004.pdf}
+    \includegraphics[width=0.45\textwidth]{figs/order_er0.1_J1_g10.0.pdf}
+    \caption{Comparison of absolute order parameter $\mathcal{O}$ as a function of stroboscopic time $t=nT$ for various system sizes $N=8,10,12,14$. Left panel: Results from Collura et al.~\cite{Collura2023} with parameters $\epsilon_r = 0.1, J = 1, \omega = 20$. Right panel: Our results with parameters $\epsilon_r = 0.1, J = 1, g_0 = 10, \omega = 20$. Both panels exhibit similar fall of the absolute value of the order parameter with increasing system size.}
+\end{figure}
+Next we explore more with different drive frequency and spin rotational error.
+
+% Put figures with figures in a 2 x 2 table format
+\newpage
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/order_er0.1_J1_g5.0.pdf}
+        \caption*{(a) Absolute order parameter for $\epsilon_r = 0.1, J = 1, g_0 = 5, \omega = 10$.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/order_er0.2_J1_g5.0.pdf}
+        \caption*{(b) Absolute order parameter for $\epsilon_r = 0.2, J = 1, g_0 = 5, \omega = 10$.}
+    \end{minipage}
+    \vfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/order_er0.1_J1_g10.0.pdf}
+        \caption*{(c) Absolute order parameter for $\epsilon_r = 0.1, J = 1, g_0 = 10, \omega = 20$.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figs/order_er0.2_J1_g10.0.pdf}
+        \caption*{(d) Absolute order parameter for $\epsilon_r = 0.2, J = 1, g_0 = 10, \omega = 20$.}
+    \end{minipage}
+    \caption{Panels (a)-(d) display the stroboscopic evolution of the absolute order parameter $\mathcal{O}$ for various system sizes $N=8,10,12,14$ under different drive frequencies and spin rotational errors. The results demonstrate that increasing the rotational error $\epsilon_r$ leads to a more rapid decay of $\mathcal{O}$, while higher drive frequencies and amplitudes tend to stabilize the DTC order.}
+\end{figure}
+
+\subsection{Note}
+In summary, we have examined the absolute order parameter $\mathcal{O}$ in a one-dimensional spin-$1/2$ chain subjected to a continuous spin flip drive protocol, drawing comparisons with the findings of Collura et al.~\cite{Collura2023}. Our numerical simulations reveal that the absolute order parameter decays with increasing system size, consistent with previous studies. Furthermore, we explored the effects of varying drive frequencies and spin rotational errors on the stability of the discrete time crystal (DTC) order. The results indicate that higher rotational errors lead to a more rapid decay of $\mathcal{O}$, while increased drive frequencies and amplitudes contribute to stabilizing the DTC phase. 
+
 
 
 \printbibliography
